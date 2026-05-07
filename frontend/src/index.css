@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&family=Plus+Jakarta+Sans:wght@200..800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #111111;
+  --secondary: #64748b;
+  --accent: #c2410c;
+  --bg-main: #ffffff;
+  --bg-alt: #f8fafc;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --glass: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+.prata-regular {
+  font-family: "Prata", serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Glassmorphism */
+.glass-effect {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+
+/* Active Nav Link */
+a.active hr {
+  display: block;
+  width: 100%;
+  background-color: var(--primary);
+  height: 2px;
+}
+
+/* Buttons */
+.btn-primary {
+  @apply bg-black text-white px-8 py-3 rounded-full hover:bg-opacity-80 active:scale-95 transition-all duration-300;
+}
+
+.btn-outline {
+  @apply border border-black px-8 py-3 rounded-full hover:bg-black hover:text-white transition-all duration-300;
+}
+
+/* Product Card Hover */
+.product-card {
+  @apply relative overflow-hidden rounded-xl bg-white transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl;
+}
+
+.product-card img {
+  @apply transition-transform duration-700 hover:scale-110;
+}

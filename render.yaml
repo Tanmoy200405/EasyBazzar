@@ -1,0 +1,42 @@
+services:
+  # Backend API
+  - type: web
+    name: easy-bazzar-backend
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    rootDir: backend
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_SECRET_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+
+  # Frontend Storefront
+  - type: static
+    name: easy-bazzar-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    publishDir: frontend/dist
+    rootDir: .
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://easy-bazzar-backend.onrender.com
+
+  # Admin Panel
+  - type: static
+    name: easy-bazzar-admin
+    env: static
+    buildCommand: npm install && npm run build
+    publishDir: admin/dist
+    rootDir: .
+    envVars:
+      - key: VITE_BACKEND_URL
+        value: https://easy-bazzar-backend.onrender.com
