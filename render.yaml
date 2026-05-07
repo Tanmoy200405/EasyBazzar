@@ -1,7 +1,7 @@
 services:
   # Backend API
   - type: web
-    name: easybazzar-1
+    name: easybazzar
     env: node
     plan: free
     buildCommand: npm install
@@ -28,7 +28,7 @@ services:
     rootDir: frontend
     envVars:
       - key: VITE_BACKEND_URL
-        value: https://easybazzar-1.onrender.com
+        value: https://easybazzar.onrender.com
 
   # Admin Panel
   - type: static
@@ -39,4 +39,4 @@ services:
     rootDir: admin
     envVars:
       - key: VITE_BACKEND_URL
-        value: https://easybazzar-1.onrender.com
+        value: https://easybazzar.onrender.com
